@@ -5,5 +5,5 @@ Feature: Viewer visits the home
 
   Scenario: View home page
     Given I am on the home page
-    Then I should see "This is the home page"
+    Then I should see "Sell for more, pay as low as a 1% listing fee"
     
