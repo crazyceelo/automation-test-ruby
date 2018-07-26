@@ -13,3 +13,8 @@ Feature: User searches by city and narrows down search using filters.
   Scenario: User can search
     Then I should fill in "City, Address, School, Agent, ZIP" with "Irvine"
     Then I should click on "Irvine"
+    Then I should click on "Filters"
+    Then I should select "minBeds" from "6"
+    Then I should select "baths" from "6+"
+    Then I should click on "House"
+    Then I should click on "Apply Filters"
