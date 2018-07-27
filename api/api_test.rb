@@ -8,7 +8,7 @@ zwsid = "zws-id=X1-ZWz18g89h9qk23_7rj5m"
 conn = Faraday.new(:url => "https://www.zillow.com/webservice/GetSearchResults.htm")
 response = conn.get "?"+zwsid+"&citystatezip=92870&address=965%20Eastwind,%20Placentia,%20ca"
 
-puts res.status # 200
+puts response.status # 200
 puts response.body #xml?  but why?
 
 
