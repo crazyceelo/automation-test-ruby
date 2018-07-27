@@ -1,6 +1,7 @@
 require "spec_helper"
 require "zombie"
 require "faraday"
+require "nokogiri"
 
 describe Zombie do
   it 'is named Ash' do 
@@ -24,12 +25,18 @@ describe "api" do
     expect(response.status).to eq(200)
   end
 
-  xit 'returns citystatezip' do
+  it 'returns citystatezip and address' do
     zwsid = "zws-id=X1-ZWz18g89h9qk23_7rj5m"
 
     conn = Faraday.new(:url => "https://www.zillow.com/webservice/GetSearchResults.htm")
     response = conn.get "?"+zwsid+"&citystatezip=92870&address=965%20Eastwind,%20Placentia,%20ca"
 
-    expect(response.body).to eq(92870)
+    f=response.body
+    doc=Nokogiri::XML(f)
+    address = doc.xpath('//address/street').text
+    citystateZip = doc.xpath('//citystatezip').text
+
+    expect(address).to eq("965 Eastwind Dr")
+    expect(citystateZip).to eq("92870")
   end
 end

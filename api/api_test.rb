@@ -1,6 +1,7 @@
 require 'faraday'
 require 'json'
 require 'faraday_middleware'
+require 'nokogiri'
 
 
 zwsid = "zws-id=X1-ZWz18g89h9qk23_7rj5m"
@@ -8,8 +9,18 @@ zwsid = "zws-id=X1-ZWz18g89h9qk23_7rj5m"
 conn = Faraday.new(:url => "https://www.zillow.com/webservice/GetSearchResults.htm")
 response = conn.get "?"+zwsid+"&citystatezip=92870&address=965%20Eastwind,%20Placentia,%20ca"
 
-puts response.status # 200
-puts response.body #xml?  but why?
+# puts response.status # 200
+# puts response.body #xml?  but why?
+
+f=response.body
+doc=Nokogiri::XML(f)
+address = doc.xpath('//address/street').text
+citystateZip = doc.xpath('//citystatezip').text
+
+puts address
+puts citystateZip
+
+
 
 
 

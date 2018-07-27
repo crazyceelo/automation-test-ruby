@@ -37,7 +37,10 @@ GEM
       faraday (>= 0.7.4, < 1.0)
     ffi (1.9.25-x64-mingw32)
     gherkin (5.1.0)
+    happymapper (0.5.0)
+      libxml-ruby (~> 2.9)
     json (2.1.0)
+    libxml-ruby (2.9.0-x64-mingw32)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     multi_json (1.13.1)
@@ -79,7 +82,9 @@ DEPENDENCIES
   cucumber
   faraday
   faraday_middleware
+  happymapper
   json
+  nokogiri
   rspec
   selenium-webdriver (= 2.53.4)
 
