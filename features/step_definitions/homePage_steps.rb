@@ -29,10 +29,13 @@ end
 
 # experiment
 Then /^I should see all results with a minimum of 6 beds$/ do
-  puts page.all(:css, '.homecard .link-override div div div:nth-child(1) .value').each()
-  # test = find(:css, '.homecard .link-override div div div:nth-child(1) .value').text
-  # puts test
-  # page.has_text?('lorem ipsum', between: 6..50)
+  page.all(:css, '.homecard .link-override div div div:nth-child(1) .value').each do |el|
+    num = el.text.to_i
+    # puts num
+    if num >= 6
+      puts num
+    end
+  end
 end
 
 When /^I should click on "(.*)"$/ do |element|
