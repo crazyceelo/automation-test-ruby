@@ -2,8 +2,12 @@ Given /^I am on the home page$/ do
   visit "https://redfin.com"
 end
  
-Then /^I should see "(.*)"$/ do |text|
-  page.has_content?(text)
+When /^I see the search field$/ do
+  page.assert_selector('#search-box-input', visible: true)
+end
+
+Then /^I should see user name "(.*)"$/ do |text|
+  page.assert_selector('[class="name"]', text: text, visible: true)
 end
 
 Then /^I should see first result$/ do
@@ -20,7 +24,14 @@ end
 # anything >= 6.
 # scenario outline maybe
 Then /^all results contain at least "(.*)" beds$/ do |text|
-  page.all('.homecard', text: text)
+  page.all('.homecard .link-override div div div:nth-child(1) .value', text: text)
+end
+
+# experiment
+Then /^I should see all results with a minimum of 6 beds$/ do
+  puts page.all(:css, '.homecard .link-override div div div:nth-child(1) .value')
+  # test = find(:css, '.homecard .link-override div div div:nth-child(1) .value').text
+  # puts test
 end
 
 When /^I should click on "(.*)"$/ do |element|
