@@ -10,10 +10,15 @@ Then /^I should see first result$/ do
   page.find('div#MapHomeCard_0')
 end
 
+# Verify that you get results back 
 Then /^I should see all results$/ do
   page.all('.homecard', visible: true)
 end
 
+# Verify each result matches your criteria.
+# I still need to figure out a way to check for
+# anything >= 6.
+# scenario outline maybe
 Then /^all results contain at least "(.*)" beds$/ do |text|
   page.all('.homecard', text: text)
 end
@@ -30,8 +35,8 @@ When /^I should select "(.*)" from "(.*)"$/ do |string, string2|
   select(string2, :from => string)
 end
 
-# Verify that you get results back 
 
 
-# Verify each result matches your criteria.
+
+
 
