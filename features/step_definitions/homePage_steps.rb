@@ -29,9 +29,10 @@ end
 
 # experiment
 Then /^I should see all results with a minimum of 6 beds$/ do
-  puts page.all(:css, '.homecard .link-override div div div:nth-child(1) .value')
+  puts page.all(:css, '.homecard .link-override div div div:nth-child(1) .value').each()
   # test = find(:css, '.homecard .link-override div div div:nth-child(1) .value').text
   # puts test
+  # page.has_text?('lorem ipsum', between: 6..50)
 end
 
 When /^I should click on "(.*)"$/ do |element|
@@ -43,7 +44,7 @@ When /^I should fill in "(.*)" with "(.*)"$/ do |element, text|
 end
 
 When /^I should select "(.*)" from "(.*)"$/ do |string, string2|
-  select(string2, :from => string)
+  select(string2, :from => string, wait: 10)
 end
 
 
