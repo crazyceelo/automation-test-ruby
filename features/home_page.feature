@@ -10,7 +10,7 @@ Feature: User searches by city and narrows down search using filters.
     And I should click on "Sign In"
     Then I should see "Carlos"
 
-  Scenario: User can search
+  Scenario: User gets results back
     When I should fill in "City, Address, School, Agent, ZIP" with "Irvine"
     And I should click on "Irvine"
     And I should click on "Filters"
@@ -18,3 +18,14 @@ Feature: User searches by city and narrows down search using filters.
     And I should select "baths" from "6+"
     And I should click on "House"
     And I should click on "Apply Filters"
+    Then I should see all results
+
+  Scenario: each result matches the criteria
+    When I should fill in "City, Address, School, Agent, ZIP" with "Irvine"
+    And I should click on "Irvine"
+    And I should click on "Filters"
+    And I should select "minBeds" from "6"
+    And I should select "baths" from "6+"
+    And I should click on "House"
+    And I should click on "Apply Filters"
+    Then all results contain at least "6" beds
