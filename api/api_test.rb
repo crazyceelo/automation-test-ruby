@@ -20,14 +20,6 @@ citystateZip = doc.xpath('//citystatezip').text
 puts address
 puts citystateZip
 
-
-
-
-
-
-
-
-
 #best version but doesn't work yet
 # conn = Faraday.new(:url => "https://www.zillow.com/webservice/GetSearchResults")
 

@@ -6,15 +6,15 @@ Then /^I should see "(.*)"$/ do |text|
   page.has_content?(text)
 end
 
-Then /^I should click on "(.*)"$/ do |element|
+When /^I should click on "(.*)"$/ do |element|
   click_on element
 end
 
-Then /^I should fill in "(.*)" with "(.*)"$/ do |element, text|
+When /^I should fill in "(.*)" with "(.*)"$/ do |element, text|
   fill_in(element, :with => text)
 end
 
-Then /^I should select "(.*)" from "(.*)"$/ do |string, string2|
+When /^I should select "(.*)" from "(.*)"$/ do |string, string2|
   select(string2, :from => string)
 end
 
