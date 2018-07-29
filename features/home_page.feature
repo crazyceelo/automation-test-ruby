@@ -30,7 +30,7 @@ Feature: User searches by city and narrows down search using filters.
     And I should click on "Apply Filters"
     Then all results contain at least "6" beds
 
-  Scenario: each result matches the criteria
+  Scenario: each result matches the exact criteria
     When I should fill in "City, Address, School, Agent, ZIP" with "Irvine"
     And I should click on "Irvine"
     And I should click on "Filters"

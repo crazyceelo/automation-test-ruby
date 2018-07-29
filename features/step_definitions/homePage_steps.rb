@@ -16,6 +16,7 @@ end
 
 # Verify that you get results back 
 Then /^I should see all results$/ do
+  sleep(2)
   page.all('.homecard', visible: true)
 end
 
@@ -24,17 +25,28 @@ end
 # anything >= 6.
 # scenario outline maybe
 Then /^all results contain at least "(.*)" beds$/ do |text|
-  page.all('.homecard .link-override div div div:nth-child(1) .value', text: text)
+  sleep(2)
+  page.all('.HomeCardContainer .right .HomeStats div:nth-child(1) .value', text: text)
 end
 
 # experiment
 Then /^I should see all results with a minimum of 6 beds$/ do
-  page.all(:css, '.homecard .link-override div div div:nth-child(1) .value').each do |el|
-    num = el.text.to_i
-    # puts num
+  sleep(2)
+  result = find(:css, '[data-rf-test-id="homes-description"]').text
+  split_result = result.split(' ')
+  # puts split_result[1] # 17 results
+  arr =[]
+  page.all(:css, '.HomeCardContainer .right .HomeStats div:nth-child(1) .value').each do |el|
+    num = el.text.to_i # converts to int
     if num >= 6
-      puts num
+      arr.push(num)
     end
+  end
+  # puts arr
+  # puts arr.length.to_s #17 results >= 6
+  # now match arr.length(17) with results shown(17)
+  if arr.length.to_s === split_result[1]
+    puts "The search matches the exact filter results. Just can't find an assertion for it. X#"
   end
 end
 
