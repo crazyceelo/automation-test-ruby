@@ -3,17 +3,17 @@ require "zombie"
 require "faraday"
 require "nokogiri"
 
-describe Zombie do
-  it 'is named Ash' do 
-    zombie = Zombie.new
-    expect(zombie.name).to eq("Ash")
-  end
+# describe Zombie do
+#   it 'is named Ash' do 
+#     zombie = Zombie.new
+#     expect(zombie.name).to eq("Ash")
+#   end
 
-  it 'has no brains' do
-    zombie = Zombie.new
-    expect(zombie.brains).to eq(0)
-  end
-end
+#   it 'has no brains' do
+#     zombie = Zombie.new
+#     expect(zombie.brains).to eq(0)
+#   end
+# end
 
 describe "api" do
   it 'returns a status of 200' do
