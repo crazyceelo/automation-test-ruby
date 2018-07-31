@@ -2,6 +2,7 @@ require "spec_helper"
 require "zombie"
 require "faraday"
 require "nokogiri"
+require "api"
 
 # describe Zombie do
 #   it 'is named Ash' do 
@@ -40,3 +41,11 @@ describe "api" do
     expect(citystateZip).to eq("92870")
   end
 end
+
+describe ZillowApi do
+  it 'returns a status of 200' do
+    zillowApi = ZillowApi.new
+    puts zillowApi.status_200
+  end
+end
+
